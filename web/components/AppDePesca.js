@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
+import PhoneFrame from "@/components/PhoneFrame";
 import { Icon, ICON } from "@/lib/icons";
 import {
   NO_NAV_SCREENS,
@@ -134,6 +135,8 @@ export default function AppDePesca() {
       ? (selectedSpecies && selectedSpecies.name) || "Espécie"
       : SCREEN_TITLES[screen] || "";
 
+  const darkStatusBar = screen === "splash" || screen === "home";
+
   function renderScreen() {
     switch (screen) {
       case "splash":
@@ -220,23 +223,25 @@ export default function AppDePesca() {
         onJump={goTab}
       />
 
-      <main className="site">
-        {offline && (
-          <div className="offline-banner">
-            <Icon path={ICON.wifiOff} size={17} color="#7fd4c5" strokeWidth={2} />
-            <span>Você está offline. Exibindo os últimos dados salvos.</span>
-          </div>
-        )}
-
-        <div ref={scrollRef} className="scroll-region">
-          {showStdHeader && (
-            <Header title={headerTitle} hasBack={history.length > 0} onBack={back} sub={headerSub} onSubClick={() => go("location")} />
+      <PhoneFrame dark={darkStatusBar}>
+        <div className="site">
+          {offline && (
+            <div className="offline-banner">
+              <Icon path={ICON.wifiOff} size={17} color="#7fd4c5" strokeWidth={2} />
+              <span>Você está offline. Exibindo os últimos dados salvos.</span>
+            </div>
           )}
-          {renderScreen()}
-        </div>
 
-        {showNav && <BottomNav activeTab={activeTab} onGoTab={goTab} />}
-      </main>
+          <div ref={scrollRef} className="scroll-region">
+            {showStdHeader && (
+              <Header title={headerTitle} hasBack={history.length > 0} onBack={back} sub={headerSub} onSubClick={() => go("location")} />
+            )}
+            {renderScreen()}
+          </div>
+
+          {showNav && <BottomNav activeTab={activeTab} onGoTab={goTab} />}
+        </div>
+      </PhoneFrame>
     </div>
   );
 }

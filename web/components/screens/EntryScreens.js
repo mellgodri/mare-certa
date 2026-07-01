@@ -133,7 +133,7 @@ export function OnboardingScreen({ onSkip, onNext }) {
   };
 
   return (
-    <div style={{ minHeight: "100%", flex: 1, display: "flex", flexDirection: "column", padding: "28px 26px 30px" }}>
+    <div style={{ minHeight: "100%", flex: 1, display: "flex", flexDirection: "column", padding: "78px 26px 30px" }}>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
           onClick={onSkip}
@@ -206,7 +206,7 @@ export function OnboardingScreen({ onSkip, onNext }) {
 
 export function PermissionScreen({ onAllow, onManual, onDeny }) {
   return (
-    <div style={{ minHeight: "100%", flex: 1, display: "flex", flexDirection: "column", padding: "40px 26px 34px" }}>
+    <div style={{ minHeight: "100%", flex: 1, display: "flex", flexDirection: "column", padding: "90px 26px 34px" }}>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 24 }}>
         <div
           style={{
@@ -251,7 +251,7 @@ export function LocationScreen({ hasBack, onBack, denied, onSelectCity, onUseGps
   const filtered = CITIES.filter((c) => !query || c.name.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <div style={{ minHeight: "100%", flex: 1, padding: "22px 0 30px" }}>
+    <div style={{ minHeight: "100%", flex: 1, padding: "62px 0 30px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "6px 24px 14px" }}>
         {hasBack && (
           <button className="icon-btn" onClick={onBack} aria-label="Voltar">
