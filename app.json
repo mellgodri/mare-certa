@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Apoio à Pesca",
+    "slug": "apoio-a-pesca",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#0B4F6C"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Usamos sua localização para mostrar as condições do tempo, vento, mar e maré da sua região."
+      }
+    },
+    "android": {
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
+      "adaptiveIcon": {
+        "backgroundColor": "#0B4F6C"
+      }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Usamos sua localização para mostrar as condições do tempo, vento, mar e maré da sua região."
+        }
+      ]
+    ]
+  }
+}

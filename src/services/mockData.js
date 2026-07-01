@@ -1,0 +1,95 @@
+// Dados locais/mock. Em produção, "species" e "defeso" podem continuar
+// armazenados localmente (conforme avaliação técnica), mas alimentados
+// por um backend de conteúdo em vez de hardcode.
+
+export const CITIES = [
+  { id: 'bc-piscarras', name: 'Balneário Piçarras', uf: 'SC', lat: -26.7592, lon: -48.6722 },
+  { id: 'penha', name: 'Penha', uf: 'SC', lat: -26.7711, lon: -48.6481 },
+  { id: 'itajai', name: 'Itajaí', uf: 'SC', lat: -26.9078, lon: -48.6614 },
+  { id: 'navegantes', name: 'Navegantes', uf: 'SC', lat: -26.8989, lon: -48.6553 },
+  { id: 'florianopolis', name: 'Florianópolis', uf: 'SC', lat: -27.5954, lon: -48.5480 },
+  { id: 'sao-francisco', name: 'São Francisco do Sul', uf: 'SC', lat: -26.2433, lon: -48.6386 },
+];
+
+export const SPECIES = [
+  {
+    id: 'tainha',
+    nomePopular: 'Tainha',
+    nomeCientifico: 'Mugil liza',
+    ambiente: 'Água salgada',
+    status: 'permitida',
+    periodoPermitido: 'Fora do período de defeso',
+    periodoDefeso: '01/05 a 31/07',
+    tamanhoMinimo: '30 cm',
+    regiao: 'Litoral de Santa Catarina',
+    orientacoes: 'Respeitar o tamanho mínimo de captura e os petrechos autorizados.',
+    fonte: 'IBAMA',
+    atualizadoEm: '2026-05-01',
+  },
+  {
+    id: 'camarao-rosa',
+    nomePopular: 'Camarão-rosa',
+    nomeCientifico: 'Farfantepenaeus brasiliensis',
+    ambiente: 'Água salgada',
+    status: 'defeso',
+    periodoPermitido: '01/05 a 27/01',
+    periodoDefeso: '28/01 a 30/04',
+    tamanhoMinimo: '—',
+    regiao: 'Litoral Sul e Sudeste',
+    orientacoes: 'Pesca proibida durante o período de defeso para proteger a reprodução da espécie.',
+    fonte: 'IBAMA',
+    atualizadoEm: '2026-04-20',
+  },
+  {
+    id: 'corvina',
+    nomePopular: 'Corvina',
+    nomeCientifico: 'Micropogonias furnieri',
+    ambiente: 'Água salgada',
+    status: 'permitida',
+    periodoPermitido: 'Permitida durante todo o ano, com restrições',
+    periodoDefeso: 'Não se aplica',
+    tamanhoMinimo: '—',
+    regiao: 'Litoral de Santa Catarina',
+    orientacoes: 'Verifique limites de captura para pesca amadora.',
+    fonte: 'IBAMA',
+    atualizadoEm: '2026-03-15',
+  },
+  {
+    id: 'dourado',
+    nomePopular: 'Dourado',
+    nomeCientifico: 'Salminus brasiliensis',
+    ambiente: 'Água doce',
+    status: 'defeso',
+    periodoPermitido: '01/04 a 31/10',
+    periodoDefeso: '01/11 a 31/03',
+    tamanhoMinimo: '55 cm',
+    regiao: 'Bacia do Rio Itajaí',
+    orientacoes: 'Defeso durante o período reprodutivo (piracema).',
+    fonte: 'IBAMA',
+    atualizadoEm: '2026-01-10',
+  },
+  {
+    id: 'robalo',
+    nomePopular: 'Robalo',
+    nomeCientifico: 'Centropomus undecimalis',
+    ambiente: 'Água salgada',
+    status: 'permitida',
+    periodoPermitido: 'Fora do período de defeso',
+    periodoDefeso: '01/12 a 28/02',
+    tamanhoMinimo: '40 cm',
+    regiao: 'Litoral de Santa Catarina',
+    orientacoes: 'Pesca amadora permitida com licença válida.',
+    fonte: 'IBAMA',
+    atualizadoEm: '2026-02-01',
+  },
+];
+
+export const getDefesoList = () =>
+  SPECIES.filter((s) => s.status === 'defeso').map((s) => ({
+    id: s.id,
+    nomePopular: s.nomePopular,
+    inicio: s.periodoDefeso.split(' a ')[0],
+    fim: s.periodoDefeso.split(' a ')[1],
+    regiao: s.regiao,
+    situacao: 'Pesca proibida no período selecionado',
+  }));

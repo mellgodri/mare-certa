@@ -1,0 +1,19 @@
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+.DS_Store
+
+# Next.js web app (web/)
+web/.next/
+web/out/
+web/.vercel/
+web/node_modules/
+*.log
